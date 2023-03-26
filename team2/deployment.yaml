@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+metadata:
+   name: team1
+   labels:
+     app: pod-2
+kind: Deployment
+spec:
+   replicas: 3
+   selector:
+      matchLabels:
+        app: orders
+   template:
+      metadata:
+        labels:
+          app: orders
+      spec:
+        containers:
+        - name: orders
+          image: gcr.io/gkemhcs-eswari/orders
+          ports:
+          - containerPort: 8080
+          
